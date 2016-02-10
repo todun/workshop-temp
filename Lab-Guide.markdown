@@ -5,4 +5,4 @@
 
 1. Sign up for a free trial Twilio account at https://www.twilio.com/try-twilio.
 2. Once you have created your account, login to the Twilio console and navigate to the **Get Started with Phone Numbers** page. 
-![Manage Twilio Phone Number](/images/Twilio-Step2.png)
+![Manage Twilio Phone Number](/Images/Twilio-Step2.png)
