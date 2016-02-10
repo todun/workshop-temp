@@ -5,3 +5,4 @@
 
 1. Sign up for a free trial Twilio account at https://www.twilio.com/try-twilio.
 2. Once you have created your account, login to the Twilio console and navigate to the **Get Started with Phone Numbers** page. ![Manage Twilio Phone Number](/Images/Twilio-Step2.png)
+3. Select the red **Get your first Twilio phone number** button to assign a phone number to your account. We’re going to generate a 10-digit phone number in this lab, but a short-code would also work if preferred. This number should be enabled for voice and messaging by default.
