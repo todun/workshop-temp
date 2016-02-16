@@ -40,9 +40,11 @@
 16. Go back to the OPTIONS method flow and select the Integration Response
 17. Select the Integration Response
 18. Add a new Integration response with a method response status of 200 (leaving the regex blank)
-19. Select the /zombie/talkers resource![talker resource](/Images/Typing-Step19.png)
+19. Select the /zombie/talkers resource
+![talker resource](/Images/Typing-Step19.png)
 20. Select "Enable CORS" in the top right
-21. Select Enable and Yes to replace the existing values![talker resource](/Images/Typing-Step21.png)<br/><br/>
+21. Select Enable and Yes to replace the existing values
+![talker resource](/Images/Typing-Step21.png)
 22. Select Deploy API
 ![talker resource](/Images/Typing-Step22.png)
 23. Select the ZombieWorkshopStage deployment and hit the Deploy button
