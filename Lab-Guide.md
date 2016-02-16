@@ -47,8 +47,7 @@
 ![talker resource](/Images/Typing-Step21.png)
 22. Select Deploy API <br/>
 ![talker resource](/Images/Typing-Step22.png)
-23. Select the ZombieWorkshopStage deployment and hit the Deploy button
-DONE: The typing indicator should now show when survivors are typing.
+23. Select the ZombieWorkshopStage deployment and hit the Deploy button. The typing indicator should now show when survivors are typing.
 ![talker resource](/Images/Typing-Done.png)
 
 <hr/>
