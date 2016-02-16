@@ -4,13 +4,13 @@
 <hr>
 <h2>Lab Overview</h2>
   <ul>
-    <li>Typing Indicator<br/>
+    <li><b>Typing Indicator</b><br/>
         This lab already has the UI and backend implemented, and focuses on how to setup the API gatway to provide a RESTful endpoint.</li>
-    <li>SMS Integration with Twilio<br/>
+    <li><b>SMS Integration with Twilio</b><br/>
         This lab wires together Twilio to an existing API gateway stack.  It shows how you can leverage templates in API Gateway to transform form posted data into JSON format for the backend lambda function.</li>
-    <li>Search over the chat messages<br/>
+    <li><b>Search over the chat messages</b><br/>
         This lab adds an elasticsearch cluster, which is used to index chat messages streamed from a dynamodb table.</li>
-    <li>Slack Integration<br/>
+    <li><b>Slack Integration</b><br/>
         This lab integrates slack.</li>
   </ul>
 <hr/>
