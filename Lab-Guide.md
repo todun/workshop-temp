@@ -11,7 +11,7 @@
     <li><b>Search over the chat messages</b><br/>
         This lab adds an elasticsearch cluster, which is used to index chat messages streamed from a dynamodb table.</li>
     <li><b>Slack Integration</b><br/>
-        This lab integrates slack.</li>
+        This lab integrates Slack into the chat application.</li>
   </ul>
 <hr/>
 <h3>1. Typing Indicator</h3>
