@@ -1,0 +1,107 @@
+<h1>Zombie Microservices Workshop: Lab Guide</h1>
+<hr>
+<h1>All Labs must be performed in us-west-2
+<hr>
+<h2>Lab Overview</h2>
+  <ul>
+    <li>Typing Indicator<br/>
+        This lab already has the UI and backend implemented, and focuses on how to setup the API gatway to provide a RESTful endpoint.</li>
+    <li>SMS Integration with Twilio<br/>
+        This lab wires together Twilio to an existing API gateway stack.  It shows how you can leverage templates in API Gateway to transform form posted data into JSON format for the backend lambda function.</li>
+    <li>Search over the chat messages<br/>
+        This lab adds an elasticsearch cluster, which is used to index chat messages streamed from a dynamodb table.</li>
+    <li>Slack Integration<br/>
+        This lab integrates slack.</li>
+  </ul>
+<hr/>
+<h3>1. Typing Indicator</h3>
+<p>The typing indicator shows up in the web chat client.  It's a section above the post message input that shows when other survivors are typing.  The UI and backend lambda functions have been implemented, and this lab focuses on how to enable the feature in API gateway.</p>
+<p> The application uses CORS in order to query the API gateway.  The lab will both wire up the backend lambda function as well as perform the necessary steps to enable CORS</p>
+
+1. Select the API Gateway Service from the main console page
+![API Gateway in Management Console](/Images/Typing-Step1.png)
+<br/>
+2. Select the Zombie Workshop API Gateway<br/>
+<br/>
+3. Go into the /zombie/talkers/GET method flow
+![GET Method](/Images/Typing-Step3.png)
+<br/>
+4. Select the Integration Request component in the flow<br/><br/>
+
+5. Under Integration Type, Select Lambda Function<br/><br/>
+
+6. Select the us-west-2 region<br/><br/>
+
+7. Select the <b><i>[CloudformationTemplateName]</i></b>-GetTalkersFromDynamoDB-<b><i>[XXXXXXXXXX]</i></b> Function<br/><br/>
+
+8. Select Save and Grant access for API Gateway to invoke the Lambda function.<br/><br/>
+
+9. Click the Method Response section of the Method Execution Flow<br/><br/>
+
+10. Add a 200 HTTP Status response
+    ![Method Response](/Images/Typing-Step10.png)
+<br/><br/>
+11. Go to the /zombie/talkers/POST method
+    ![POST Method](/Images/Typing-Step11.png)
+<br/><br/>
+12. Perform Steps 4-10, but instead select the <b><i>[CloudformationTemplateName]</i></b>-WriteTalkersToDynamoDB-<b><i>[XXXXXXXXXX]</i></b> Lambda Function<br/><br/>
+13. Go to the /zombie/talkers/OPTIONS method<br/><br/>
+14. Select the Method Response<br/><br/>
+15. Add a 200 method response<br/><br/>
+16. Go back to the OPTIONS method flow and select the Integration Response<br/><br/>
+17. Select the Integration Response<br/><br/>
+18. Add a new Integration response with a method response status of 200 (leaving the regex blank)<br/><br/>
+19. Select the /zombie/talkers resource![talker resource](/Images/Typing-Step19.png)<br/><br/>
+20. Select "Enable CORS" in the top right<br/><br/>
+21. Select Enable and Yes to replace the existing values![talker resource](/Images/Typing-Step21.png)<br/><br/>
+22. Select Deploy API<br/>![talker resource](/Images/Typing-Step22.png)<br/><br/>
+23. Select the ZombieWorkshopStage deployment and hit the Deploy button<br/><br/>
+
+DONE: The typing indicator should now show when survivors are typing.
+![talker resource](/Images/Typing-Done.png)
+
+
+<hr/>
+<h3>2. SMS Integration with Twilio</h3>
+<p>In this section, you’ll wire together Twilio with an existing API Gateway endpoint created in the CloudFormation stack, to bring SMS texting functionality into the Zombie Chat application.</p>
+
+1. Sign up for a free trial Twilio account at https://www.twilio.com/try-twilio.
+2. Once you have created your account, login to the Twilio console and navigate to the **Get Started with Phone Numbers** page as shown below. ![Manage Twilio Phone Number](/Images/Twilio-Step2.png)
+3. Select the red **Get your first Twilio phone number** button to assign a phone number to your account. We’re going to generate a 10-digit phone number in this lab, but a short-code would also work if preferred. This number should be enabled for voice and messaging by default.
+4. Once you’ve received a phone number, navigate to the **Manage Numbers** page and click on your phone number, which will take you to the properties page for that number.
+5. Scroll to the bottom of the properties page, to the messaging section. In the **Configure With** section, select the **URL** radio button option.
+6. Now you’ll retrieve your **/mobile** API endpoint from API Gateway and provide it to Twilio to hook up to AWS. Open the AWS Management console in a new tab, and navigate to API Gateway, as illustrated below. Be sure to leave the Twilio tab open as you’ll need it again to finish setup. ![API Gateway in Management Console](/Images/Twilio-Step6.png)
+7. In the API Gateway console, select your API, **Zombie Workshop API Gateway**. On the top navigation bar, under Resources, click Stages, shown highlighted in orange below. ![API Gateway Resources Page](/Images/Twilio-Step7.png)
+8. On the Stages page, expand the Resources tree on the left pane and select **POST** in the **/mobile** resource. The mobile resource is the endpoint that CloudFormation created for sms functionality. You should see an **Invoke URL** displayed for your /mobile resource, as shown below. ![API Gateway Invoke URL](/Images/Twilio-Step8.png)
+9. Copy the Invoke URL and return to Twilio. On the Twilio page you left open, paste the Invoke URL you copied from API Gateway into the **Request URL** field. Ensure that the request type is set to **HTTP POST**. This is illustrated below. ![Twilio Request URL](/Images/Twilio-Step9.png)
+10. Finally, click **Save**. You are now ready to test out Twilio integration with your API. Send a text message to your Twilio phone number, you should receive a confirmation response text message and the message you sent should display in the web app chat room. You have successfully integrated Twilio text message functionality with API Gateway.
+
+<hr/>
+<h3>3. Search over the chat messages</h3>
+1. Select the Amazon Elasticsearch from the main console page<br/><br/>
+2. Create a new Amazon Elasticsearch domain<br/><br/>
+3. Leave the default cluster settings<br/><br/>
+4. For access policy, select the allow access from one or more accounts and fill in the account ID<br/><br/>
+5. Save and Select Next to the domain review page<br/><br/>
+6. Select Confirm and Create<br/><br/>
+7. The creation of the ELasticsearch cluster takes approximately 10 minutes<br/><br/>
+8. Take note of the Endpoint once the cluster starts,  we'll need that for the Lambda function ![API Gateway Invoke URL](/Images/Search-Step8.png)<br/><br/>
+9. Go into the Lambda Service Page<br/><br/>
+10. Select Create a Lambda Function<br/><br/>
+11. Skip the Blueprint section by selecting the Skip button in the bottom right<br/><br/>
+12. Fill in ZombieWorkshopSearchIndexing<br/><br/>
+13. Paste in the code from the ZombieWorkshopSearchIndexing.js file<br/><br/>
+14. On line 7, replace ENDPOINT_HERE with the Elasticsearch endpoint created in step 8.  Make sure it starts with https://<br/><br/>
+15. Under the Role, create a new Dynamodb event stream role<br/><br/>
+16. Select Next and Create Function<br/><br/>
+17. Select the "Event Sources" tab for the new ZombieWorkshopSearchIndexing function<br/><br/>
+18. Select Add event source<br/><br/>
+19. Select the DynamoDB Event source type and the messages dynamodb table.  You can leave the rest the default<br/><br/>
+20. After creation, you should see an event source that looks like this ![API Gateway Invoke URL](/Images/Search-Step20.png)<br/><br/>
+
+22. Now after you post messages,  you can see them show up in the elasticsearch indexing ![API Gateway Invoke URL](/Images/Search-Done.png)<br/><br/>
+
+
+
+<hr/>
+<h3>4. Slack Integration</h3>
