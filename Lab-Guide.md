@@ -134,6 +134,7 @@ Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions
 
 ####Installing the application on the Intel Edison
 <b>If you are following this guide during a workshop presented by AWS, please ignore this section. An Intel Edison board should already be configured for the workshop particants to consume messages from.</b>
+
 1. First, You will need to get your Edison board set up. You can find a getting started guide for this on the Intel site [here](https://software.intel.com/en-us/articles/assemble-intel-edison-on-the-arduino-board).   
 Note that for the purpose of this tutorial, we will be writing our client code for the Edison in node.js and will therefore be using the Intel® XDK for IoT (referred to as 'XDK' from here on) as our IDE.
 2. You will need to physically connect the Grove PIR Motion Sensor to pin D6 on the breakout board.  
