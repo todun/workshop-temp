@@ -99,8 +99,8 @@
 <b>Please note that this section requires purchasing equipment.</b>
 
 Items Required
-* 1 Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0). <br/>
-* Within this start kit you will be using the following components for this exercise:<br/>
+1. One Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0). <br/>
+2. Within this start kit you will be using the following components for this exercise:<br/>
     1. Intel® Edison for Arduino<br/>
     2. Base Shield<br/>
     3. USB Cable; 480mm-Black x1<br/>
