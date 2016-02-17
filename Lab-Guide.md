@@ -124,6 +124,7 @@ Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions
 
 ####Creating the AWS Backend
 <b>If you are following this guide during a workshop presented by AWS, please ignore the following steps 2-4. An SNS topic and Intel Edison board should already be configured for the workshop particants to consume messages from.</b>
+
 1. Firstly, you will need to have an AWS Account. If you do not already have one, you can sign up [here](https://aws.amazon.com).
 2. We will now create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click 'Topics' in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic.
 ![Create Topic Screenshot](Images/MotionSensor-createTopic.png)
