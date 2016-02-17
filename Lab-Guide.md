@@ -96,8 +96,8 @@
 <hr/>
 <h3>5. Motion Sensor Integration with Intel Edison and Grove</h3>
 <b>Please note that this section requires purchasing equipment.</b>
-<b>Items Required</b>
-    * 1 Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0).
+<b>Items Required</b><br/>
+    * 1 Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0). <br/>
     * Within this start kit you will be using the following components for this exercise:
         1. Intel® Edison for Arduino
         2. Base Shield
