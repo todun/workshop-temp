@@ -138,7 +138,7 @@ Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions
 1. First, You will need to get your Edison board set up. You can find a getting started guide for this on the Intel site [here](https://software.intel.com/en-us/articles/assemble-intel-edison-on-the-arduino-board).   
 Note that for the purpose of this tutorial, we will be writing our client code for the Edison in node.js and will therefore be using the Intel® XDK for IoT (referred to as 'XDK' from here on) as our IDE.
 2. You will need to physically connect the Grove PIR Motion Sensor to pin D6 on the breakout board.  
-3. Download all of the code from the 'zombieIntelEdisonCode' folder 'in this repository and store it in a folder locally on your machine. this simply consists of a main.js file (our  applicaiton) and our package.json (our app dependencies).  
+3. Download all of the code from the 'zombieIntelEdisonCode' folder in this repository and store it in a folder locally on your machine. This simply consists of a main.js file (our application) and our package.json (our app dependencies).  
 4. Navigate to the homepage in the XDK and start a new project.  
 5. Choose to import an existing Node.js project and select the folder where you stored the code from this repository in the previous step.  
 6. Give your project a name. We called ours <b>zombieSensor</b>.
@@ -159,7 +159,9 @@ Note that for the purpose of this tutorial, we will be writing our client code f
   ]
 }
 ```
+
 9. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNs topic.
+
 ```
 AWS.config.update({accessKeyId: 'ENTER ACCESSKEY HERE', secretAccessKey: 'ENTER SECRET ACCESS KEY HERE', region: 'ENTER REGION HERE'});
 ```
