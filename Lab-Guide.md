@@ -161,18 +161,17 @@ Note that for the purpose of this tutorial, we will be writing our client code f
     ```
 
 9. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNs topic.
-```
-AWS.config.update({accessKeyId: 'ENTER ACCESSKEY HERE', secretAccessKey: 'ENTER SECRET ACCESS KEY HERE', region: 'ENTER REGION HERE'});
-```
+    ```
+    AWS.config.update({accessKeyId: 'ENTER ACCESSKEY HERE', secretAccessKey: 'ENTER SECRET ACCESS KEY HERE', region: 'ENTER REGION HERE'});
+    ```
 10. Edit the following line in main.js to reflect the region in which you created the SNS topic.  
-```
-var sns = new AWS.SNS({region: 'ENTER REGION HERE'}); 
-```  
+    ```
+    var sns = new AWS.SNS({region: 'ENTER REGION HERE'}); 
+    ```  
 11. Edit the following line in main.js to reflect the Amazon resource name (ARN) of the SNS topic that you created earlier.
-
-```
-TopicArn: "ENTER YOUR SNS TOPIC ARN HERE"
-```  
+    ```
+    TopicArn: "ENTER YOUR SNS TOPIC ARN HERE"
+    ```  
 12. You now need to connect the XDK to your Intel Edison device. There is a guide on the Intel site on how to do this [here](https://software.intel.com/en-us/getting-started-with-the-intel-xdk-iot-edition) under the 'Connect to your Intel® IoT Platform' section.  
 13. You now need to build the app and push it to your device. Firstly hit the build/install icon, this looks like a hammer in the XDK. It may take a couple of minutes to install the required packages etc.
 14. Once the app has been built succesfully, you can run the app by pressing the run icon, this looks like a circuit board with a green 'play' sign.
