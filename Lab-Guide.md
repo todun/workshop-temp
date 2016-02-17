@@ -96,11 +96,11 @@
 <hr/>
 
 <h3>5. Motion Sensor Integration with Intel Edison and Grove</h3>
-<p>If you wish to utilize the Zombie Sensor as a part of the workshop, this guide will walk you through the following:
-* Items required to create the physical Zombie sensor
-* How to create the AWS backend (Simple Notification Service Topic) for the Zombie detector
-* How to install the code in the repo on to the device
-</p>
+<p>If you wish to utilize the Zombie Sensor as a part of the workshop, this guide will walk you through the following:</p>
+* Items required to create the physical Zombie sensor<br/>
+* How to create the AWS backend (Simple Notification Service Topic) for the Zombie detector<br/>
+* How to install the code in the repo on to the device<br/>
+
 <b>Please note that this section requires purchasing equipment.</b>
 ###Items Required
 1. One Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0). <br/>
@@ -110,3 +110,5 @@
     3. USB Cable; 480mm-Black x1<br/>
     4. USB Wall Power Supply x1<br/>
     5. Grove - PIR Motion Sensor
+    
+<hr/>
