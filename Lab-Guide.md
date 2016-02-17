@@ -5,13 +5,15 @@
 <h2>Lab Overview</h2>
   <ul>
     <li><b>Typing Indicator</b><br/>
-        This lab already has the UI and backend implemented, and focuses on how to setup the API gatway to provide a RESTful endpoint.</li>
+        This exercise already has the UI and backend implemented, and focuses on how to setup the API gatway to provide a RESTful endpoint.</li>
     <li><b>SMS Integration with Twilio</b><br/>
-        This lab wires together Twilio to an existing API gateway stack.  It shows how you can leverage templates in API Gateway to transform form posted data into JSON format for the backend lambda function.</li>
+        This exercise wires together Twilio to an existing API gateway stack.  It shows how you can leverage templates in API Gateway to transform form posted data into JSON format for the backend lambda function.</li>
     <li><b>Search over the chat messages</b><br/>
-        This lab adds an elasticsearch cluster, which is used to index chat messages streamed from a dynamodb table.</li>
+        This exercise adds an elasticsearch cluster, which is used to index chat messages streamed from a dynamodb table.</li>
     <li><b>Slack Integration</b><br/>
-        This lab integrates Slack into the chat application.</li>
+        This exercise integrates Slack into the chat application.</li>
+    <li><b>Intel Edison Zombie Motion Sensor</b>
+        This exercise integrates motion sensor detection of zombies to the chat system using an Intel Edison board and a Grove PIR Motion Sensor.</li>
   </ul>
 <hr/>
 <h3>1. Typing Indicator</h3>
@@ -93,3 +95,5 @@
 
 <hr/>
 <h3>4. Slack Integration</h3>
+
+<h3>5. Motion Sensor Integration with Intel Edison and Grove</h3>
