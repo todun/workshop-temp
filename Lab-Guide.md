@@ -122,5 +122,16 @@ A simple workflow of this architecture is:
 
 Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions subscribed to the topic.
 
+####Creating the AWS Backend
+1. Firstly, you will need to have an AWS Account. If you do not already have one, you can sign up [here](https://aws.amazon.com).
+2. Next, we will create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click 'Topics' in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic.
+![Create Topic Screenshot](Images/MotionSensor-createTopic.png)
+3. You will now need to edit the topic polciy to permit any AWS account to subscribe lambda functions to your SNS topic. Check the check box next to your new topic, and then click Actions -> Edit topic policy. You need to configure these settings presented as per the below screenshot. Then click Update Policy. This step is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic.
+![Edit Topic Policy Screenshot](/Images/MotionSensor-createTopicPolicy.png)
+
+
+
+
+
 
 <hr/>
