@@ -144,22 +144,21 @@ Note that for the purpose of this tutorial, we will be writing our client code f
 6. Give your project a name. We called ours <b>zombieSensor</b>.
 7. You now need to edit the code in main.js to include your AWS credentials and the SNS topic that you have created. Firstly, we'll need some AWS credentials. 
 8. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html), your IAM policy for the user should look like the following: 
-
-```
-{
-  "Version": "2012-10-17",
-  
-  "Statement": [
-    {
-      "Action": [
-        "sns:Publish"
-      ],
-      "Effect": "Allow",
-      "Resource": "ENTER YOUR SNS TOPIC ARN HERE"
-    }
-  ]
-}
-```
+    ```
+        {
+        "Version": "2012-10-17",
+        
+        "Statement": [
+            {
+            "Action": [
+                "sns:Publish"
+            ],
+            "Effect": "Allow",
+            "Resource": "ENTER YOUR SNS TOPIC ARN HERE"
+            }
+        ]
+        }
+    ```
 
 9. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNs topic.
 ```
