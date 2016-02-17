@@ -1,7 +1,5 @@
 <h1>Zombie Microservices Workshop: Lab Guide</h1>
-<hr>
 <h2>All Labs must be performed in us-west-2</h2>
-<hr>
 <h2>Lab Overview</h2>
   <ul>
     <li><b>Typing Indicator</b><br/>
