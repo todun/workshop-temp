@@ -99,7 +99,7 @@
 <p>If you wish to utilize the Zombie Sensor as a part of the workshop, this guide will walk you through the following:</p>
 * Items required to create the physical Zombie sensor<br/>
 * How to create the AWS backend (Simple Notification Service Topic) for the Zombie detector<br/>
-* How to install the code in the repo on to the device<br/>
+* How to install the code in the repo onto the device<br/>
 
 <b>Please note that this section requires purchasing equipment.</b>
 ###Items Required
@@ -110,5 +110,16 @@
     3. USB Cable; 480mm-Black x1<br/>
     4. USB Wall Power Supply x1<br/>
     5. Grove - PIR Motion Sensor
-    
+
+The application code is a very simple app that publishes a message to an Amazon Simple Notification Service (SNS) queue when motion is detected on the Grove PIR Motion Sensor. For the purpose of a workshop, this should be done only once in a central account by the workshop organiser, the topic will be made public so that the various teams are able to subscribe to this topic and make use of it during the workshop. 
+
+```
+{"message":"A Zombie has been detected in London!", "value":"1", 
+"city":"London", "longtitude":"-0.127758", "lattitude":"51.507351"}
+```
+
+A simple workflow of this architecture is:
+
+Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions subscribed to the topic.
+
 <hr/>
