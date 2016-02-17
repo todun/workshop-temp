@@ -178,7 +178,9 @@ Note that for the purpose of this tutorial, we will be writing our client code f
 15. Your app should now be running on the Edison device and your messages being published to the SNS topic. you can now consume this topic and do something meaningful with the Zombie alerts. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Have fun!!
 
 ####Consuming the SNS Topic with AWS Lambda
-To help you get started consuming the Zombie alert data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js
+To help you get started consuming the Zombie alert data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js. 
+
+Using the things learned in this workshop, can you develop a Lambda function that alerts survivors of zombies? HINT: You'll want to create a Lambda function that takes the string from SNS and writes it to the <b>Messages</b> DynamoDB table so that the chat room can see the alerts when Zombies are detected.
   
 
 
