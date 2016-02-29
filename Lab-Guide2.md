@@ -118,7 +118,7 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 3\. On the **Configure Cluster** page, leave the default cluster settings and click **Next**. 
 
-4\. For the access policy, select the **Allow or deny access to one or more AWS accounts or IAM users** option in the dropdown and fill in your account ID. Make sure "Allow" is selected for the **Effect** dropdown option. Click **OK**. 
+4\. For the access policy, select the **Allow or deny access to one or more AWS accounts or IAM users** option in the dropdown and fill in your account ID. Make sure **Allow** is selected for the "Effect" dropdown option. Click **OK**. 
 
 5\. Select **Next** to go to the domain review page 
 
