@@ -14,6 +14,8 @@
     This exercise integrates Slack into the chat application to send messages from Slack.
 *   **Intel Edison Zombie Motion Sensor** 
     This exercise integrates motion sensor detection of zombies to the chat system using an Intel Edison board and a Grove PIR Motion Sensor.
+*   **Workshop Cleanup** 
+    This section points out some instructions to tear down your environment when you're done working on the labs.
 
 * * *
 
@@ -112,7 +114,7 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 ### 3\. Search over the chat messages
 
-1\. Select the Amazon ElasticSearch icon from the main console page 
+1\. Select the Amazon ElasticSearch icon from the main console page. 
 
 2\. Create a new Amazon ElasticSearch domain. Provide it a name such as "Zombie-chat-logs". Click **Next**.
 
@@ -120,13 +122,13 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 4\. For the access policy, select the **Allow or deny access to one or more AWS accounts or IAM users** option in the dropdown and fill in your account ID. Make sure **Allow** is selected for the "Effect" dropdown option. Click **OK**. 
 
-5\. Select **Next** to go to the domain review page 
+5\. Select **Next** to go to the domain review page. 
 
-6\. On the Review page, select **Confirm and create** 
+6\. On the Review page, select **Confirm and create** to create your ElasticSearch cluster.
 
-7\. The creation of the ElasticSearch cluster takes approximately 10 minutes 
+7\. The creation of the ElasticSearch cluster takes approximately 10 minutes. 
 
-8\. Take note of the Endpoint once the cluster starts, we'll need that for the Lambda function 
+8\. Take note of the Endpoint once the cluster starts, we'll need that for the Lambda function. 
 ![API Gateway Invoke URL](/Images/Search-Step8.png) 
 
 9\. Go into the Lambda service page by clicking on Lambda in the Management Console 
