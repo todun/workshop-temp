@@ -225,7 +225,14 @@ Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions
 
 8\. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Your IAM policy for the user should look like the following: 
 
-``` { "Version": "2012-10-17", "Statement": [ { "Action": [ "sns:Publish" ], "Effect": "Allow", "Resource": "ENTER YOUR SNS TOPIC ARN HERE" } ] } ``` 
+``` { 
+    "Version": "2012-10-17", 
+    "Statement": [{ 
+        "Action": [ "sns:Publish" ], 
+        "Effect": "Allow", 
+        "Resource": "ENTER YOUR SNS TOPIC ARN HERE" 
+    }] 
+} ``` 
 
 9\. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNS topic. 
 
