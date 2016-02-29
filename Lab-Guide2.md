@@ -272,11 +272,11 @@ In this section you will configure a Lambda function that triggers when messages
 
 10\. As data is sent to the SNS topic, it will kick off your function to consume the messages. The blueprint you used simply logs the message data to CloudWatch Logs. Verify that events are showing up in your CloudWatch Logs stream with Zombie Sensor messages from the Intel Edison. When you have confirmed that messages are showing up, now you need to get those alerts into the Chap application for survivors to see!
 
-**HINT:** You'll want to edit your Lambda function to communicate with the Messages API in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. 
+**HINT:** You'll want to edit your Lambda function to communicate with the **/messages** endpoint in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. 
+
+**If you are unable to complete this section and would like the solution with the complete Lambda function to finish this lab, please continue reading**.
 
 **Solution with Code**
-
-**If you are unable to complete this section and would like the solution with the complete Lambda function, please continue reading**.
 
 11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop contents. Copy the entire contents of this JS file and overwrite your existing function with this code.
 
