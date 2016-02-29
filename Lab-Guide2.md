@@ -189,6 +189,7 @@ If you wish to utilize the Zombie Sensor as a part of the workshop, this guide w
 ``` {"message":"A Zombie has been detected in London!", "value":"1", "city":"London", "longtitude":"-0.127758", "lattitude":"51.507351"} ``` 
 
 A simple workflow of this architecture is: 
+
 Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions subscribed to the topic. 
 
 ####Creating the AWS Backend 
