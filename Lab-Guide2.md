@@ -1,17 +1,17 @@
 # Zombie Microservices Workshop: Lab Guide
 
-## All Labs must be performed in us-west-2
+## All Labs must be performed in us-west-2 (Oregon)
 
 ## Lab Overview
 
 *   **Typing Indicator**  
-    This exercise already has the UI and backend implemented, and focuses on how to setup the API gatway to provide a RESTful endpoint.
+    This exercise already has the UI and backend implemented, and focuses on how to setup the API Gateway to provide a RESTful endpoint.
 *   **SMS Integration with Twilio**  
-    This exercise wires together Twilio to an existing API gateway stack. It shows how you can leverage templates in API Gateway to transform form posted data into JSON format for the backend lambda function.
+    This exercise wires together Twilio to an existing API Gateway stack. It shows how you can leverage templates in API Gateway to transform form posted data into JSON format for the backend lambda function.
 *   **Search over the chat messages**  
-    This exercise adds an elasticsearch cluster, which is used to index chat messages streamed from a dynamodb table.
+    This exercise adds an ElasticSearch cluster, which is used to index chat messages streamed from a DynamoDB table.
 *   **Slack Integration**  
-    This exercise integrates Slack into the chat application.
+    This exercise integrates Slack into the chat application to send messages from Slack.
 *   **Intel Edison Zombie Motion Sensor** 
     This exercise integrates motion sensor detection of zombies to the chat system using an Intel Edison board and a Grove PIR Motion Sensor.
 
