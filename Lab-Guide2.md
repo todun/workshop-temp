@@ -12,10 +12,10 @@
     This exercise adds an ElasticSearch cluster, which is used to index chat messages streamed from a DynamoDB table.
 *   **Slack Integration**  
     This exercise integrates Slack into the chat application to send messages from Slack.
-*   **Intel Edison Zombie Motion Sensor** 
+*   **Intel Edison Zombie Motion Sensor**  
     This exercise integrates motion sensor detection of zombies to the chat system using an Intel Edison board and a Grove PIR Motion Sensor.
-*   **Workshop Cleanup** 
-    This section points out some instructions to tear down your environment when you're done working on the labs.
+*   **Workshop Cleanup**  
+    This section points out some instructions to tear down your environment when you're done working on the labs. 
 
 * * *
 
