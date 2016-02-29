@@ -223,6 +223,34 @@ Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions
 
 7\. You now need to edit the code in main.js to include your AWS credentials and the SNS topic that you have created. Firstly, we'll need some AWS credentials. 
 
-8\. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html), your IAM policy for the user should look like the following: ``` { "Version": "2012-10-17", "Statement": [ { "Action": [ "sns:Publish" ], "Effect": "Allow", "Resource": "ENTER YOUR SNS TOPIC ARN HERE" } ] } ``` 9\. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNS topic. ``` AWS.config.update({accessKeyId: 'ENTER ACCESSKEY HERE', secretAccessKey: 'ENTER SECRET ACCESS KEY HERE', region: 'ENTER REGION HERE'}); ``` 10\. Edit the following line in main.js to reflect the region in which you created the SNS topic. ``` var sns = new AWS.SNS({region: 'ENTER REGION HERE'}); ``` 11\. Edit the following line in main.js to reflect the Amazon Resource Name (ARN) of the SNS topic that you created earlier. ``` TopicArn: "ENTER YOUR SNS TOPIC ARN HERE" ``` 12\. You now need to connect the XDK to your Intel Edison device. There is a guide on the Intel site on how to do this [here](https://software.intel.com/en-us/getting-started-with-the-intel-xdk-iot-edition) under the 'Connect to your Intel® IoT Platform' section. 13\. You now need to build the app and push it to your device. Firstly hit the build/install icon, this looks like a hammer in the XDK. It may take a couple of minutes to install the required packages etc. 14\. Once the app has been built succesfully, you can run the app by pressing the run icon, this looks like a circuit board with a green 'play' sign. 15\. Your app should now be running on the Edison device and your messages being published to the SNS topic. you can now consume this topic and do something meaningful with the Zombie alerts. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Have fun!! ####Consuming the SNS Topic with AWS Lambda To help you get started consuming the Zombie alert data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js. Using the things learned in this workshop, can you develop a Lambda function that alerts survivors of zombies? **HINT:** You'll want to create a Lambda function that takes the string from SNS and writes it to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected.
+8\. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Your IAM policy for the user should look like the following: 
+
+``` { "Version": "2012-10-17", "Statement": [ { "Action": [ "sns:Publish" ], "Effect": "Allow", "Resource": "ENTER YOUR SNS TOPIC ARN HERE" } ] } ``` 
+
+9\. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNS topic. 
+
+``` AWS.config.update({accessKeyId: 'ENTER ACCESSKEY HERE', secretAccessKey: 'ENTER SECRET ACCESS KEY HERE', region: 'ENTER REGION HERE'}); ``` 
+
+10\. Edit the following line in main.js to reflect the region in which you created the SNS topic. 
+
+``` var sns = new AWS.SNS({region: 'ENTER REGION HERE'}); ``` 
+
+11\. Edit the following line in main.js to reflect the Amazon Resource Name (ARN) of the SNS topic that you created earlier. 
+
+``` TopicArn: "ENTER YOUR SNS TOPIC ARN HERE" ``` 
+
+12\. You now need to connect the XDK to your Intel Edison device. There is a guide on the Intel site on how to do this [here](https://software.intel.com/en-us/getting-started-with-the-intel-xdk-iot-edition) under the 'Connect to your Intel® IoT Platform' section. 
+
+13\. You now need to build the app and push it to your device. Firstly hit the build/install icon, this looks like a hammer in the XDK. It may take a couple of minutes to install the required packages etc. 
+
+14\. Once the app has been built succesfully, you can run the app by pressing the run icon, this looks like a circuit board with a green 'play' sign. 
+
+15\. Your app should now be running on the Edison device and your messages being published to the SNS topic. you can now consume this topic and do something meaningful with the Zombie alerts. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Have fun!! 
+
+####Consuming the SNS Topic with AWS Lambda 
+
+To help you get started consuming the Zombie alert data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js. Using the things learned in this workshop, can you develop a Lambda function that alerts survivors of zombies? 
+
+**HINT:** You'll want to create a Lambda function that takes the string from SNS and writes it to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected.
 
 * * *
