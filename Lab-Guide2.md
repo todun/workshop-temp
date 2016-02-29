@@ -276,7 +276,7 @@ In this section you will configure a Lambda function that triggers when messages
 
 **Solution with Code**
 
-**If you are unable to complete this section and would like the soluiton with the complete Lambda function, please continue reading, **.
+**If you are unable to complete this section and would like the soluiton with the complete Lambda function, please continue reading**.
 
 11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop contents. Copy the entire contents of this JS file and overwrite your existing function with this code.
 
