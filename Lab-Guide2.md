@@ -176,6 +176,7 @@ If you wish to utilize the Zombie Sensor as a part of the workshop, this guide w
 **Please note that this section requires purchasing equipment if you are setting this up on your own outside of the workshop.** 
 
 **Items Required** 
+
 1\. One Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0).  
 2\. Within this start kit you will be using the following components for this exercise:  
 
