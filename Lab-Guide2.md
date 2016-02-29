@@ -65,11 +65,9 @@ The application uses CORS in order to query the API gateway. The lab will both w
 
 21\. Select Enable and Yes to replace the existing values ![talker resource](/Images/Typing-Step21.png) 
 
-22\. Select Deploy API  
-![talker resource](/Images/Typing-Step22.png) 
+22\. Select Deploy API ![talker resource](/Images/Typing-Step22.png) 
 
-23\. Select the ZombieWorkshopStage deployment and hit the Deploy button. The typing indicator should now show when survivors are typing.  
-![talker resource](/Images/Typing-Done.png)
+23\. Select the ZombieWorkshopStage deployment and hit the Deploy button. The typing indicator should now show when survivors are typing. ![talker resource](/Images/Typing-Done.png)
 
 * * *
 
