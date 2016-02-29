@@ -25,8 +25,50 @@ The application uses CORS in order to query the API gateway. The lab will both w
 
 1\. Select the API Gateway Service from the main console page ![API Gateway in Management Console](/Images/Typing-Step1.png) 
 
-2\. Select the Zombie Workshop API Gateway 3\. Go into the /zombie/talkers/GET method flow ![GET Method](/Images/Typing-Step3.png) 4\. Select the Integration Request component in the flow 5\. Under Integration Type, Select Lambda Function 6\. Select the us-west-2 region 7\. Select the **_[CloudformationTemplateName]_**-GetTalkersFromDynamoDB-**_[XXXXXXXXXX]_** Function 8\. Select Save and Grant access for API Gateway to invoke the Lambda function. 9\. Click the Method Response section of the Method Execution Flow 10\. Add a 200 HTTP Status response ![Method Response](/Images/Typing-Step10.png) 11\. Go to the /zombie/talkers/POST method ![POST Method](/Images/Typing-Step11.png) 12\. Perform Steps 4-10, but instead select the **_[CloudformationTemplateName]_**-WriteTalkersToDynamoDB-**_[XXXXXXXXXX]_** Lambda Function 13\. Go to the /zombie/talkers/OPTIONS method 14\. Select the Method Response 15\. Add a 200 method response 16\. Go back to the OPTIONS method flow and select the Integration Response 17\. Select the Integration Response 18\. Add a new Integration response with a method response status of 200 (leaving the regex blank) 19\. Select the /zombie/talkers resource ![talker resource](/Images/Typing-Step19.png) 20\. Select "Enable CORS" in the top right 21\. Select Enable and Yes to replace the existing values ![talker resource](/Images/Typing-Step21.png) 22\. Select Deploy API  
-![talker resource](/Images/Typing-Step22.png) 23\. Select the ZombieWorkshopStage deployment and hit the Deploy button. The typing indicator should now show when survivors are typing.  
+2\. Select the Zombie Workshop API Gateway 
+
+3\. Go into the /zombie/talkers/GET method flow ![GET Method](/Images/Typing-Step3.png) 
+
+4\. Select the Integration Request component in the flow 
+
+5\. Under Integration Type, Select Lambda Function 
+
+6\. Select the us-west-2 region 
+
+7\. Select the **_[CloudformationTemplateName]_**-GetTalkersFromDynamoDB-**_[XXXXXXXXXX]_** Function 
+
+8\. Select Save and Grant access for API Gateway to invoke the Lambda function. 
+
+9\. Click the Method Response section of the Method Execution Flow 
+
+10\. Add a 200 HTTP Status response ![Method Response](/Images/Typing-Step10.png) 
+
+11\. Go to the /zombie/talkers/POST method ![POST Method](/Images/Typing-Step11.png) 
+
+12\. Perform Steps 4-10, but instead select the **_[CloudformationTemplateName]_**-WriteTalkersToDynamoDB-**_[XXXXXXXXXX]_** Lambda Function 
+
+13\. Go to the /zombie/talkers/OPTIONS method 
+
+14\. Select the Method Response 
+
+15\. Add a 200 method response 
+
+16\. Go back to the OPTIONS method flow and select the Integration Response 
+
+17\. Select the Integration Response 
+
+18\. Add a new Integration response with a method response status of 200 (leaving the regex blank) 
+
+19\. Select the /zombie/talkers resource ![talker resource](/Images/Typing-Step19.png) 
+
+20\. Select "Enable CORS" in the top right 
+
+21\. Select Enable and Yes to replace the existing values ![talker resource](/Images/Typing-Step21.png) 
+
+22\. Select Deploy API  
+![talker resource](/Images/Typing-Step22.png) 
+
+23\. Select the ZombieWorkshopStage deployment and hit the Deploy button. The typing indicator should now show when survivors are typing.  
 ![talker resource](/Images/Typing-Done.png)
 
 * * *
