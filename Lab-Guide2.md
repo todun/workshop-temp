@@ -245,12 +245,43 @@ Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions
 
 14\. Once the app has been built succesfully, you can run the app by pressing the run icon, this looks like a circuit board with a green 'play' sign. 
 
-15\. Your app should now be running on the Edison device and your messages being published to the SNS topic. you can now consume this topic and do something meaningful with the Zombie alerts. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Have fun!! 
+15\. Your app should now be running on the Edison device and your messages being published to the SNS topic. You can now consume this topic and do something meaningful with the Zombie alerts. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Continue below to learn how to integrate the SNS notifications into the chat application. 
 
-####Consuming the SNS Topic with AWS Lambda 
+####Consuming the SNS Topic Messages with AWS Lambda 
 
-To help you get started consuming the Zombie alert data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js. Using the things learned in this workshop, can you develop a Lambda function that alerts survivors of zombies? 
+To help you get started consuming the Zombie Sensor data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js. Using the things learned in this workshop, can you develop a Lambda function that alerts survivors of zombies? 
+In this section you will configure a Lambda function that triggers when messages are sent from the Edison device to the SNS topic. 
 
-**HINT:** You'll want to create a Lambda function that takes the string from SNS and writes it to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected.
+1\. Open up the Lambda console and create a new Lambda function.
+
+2\. On the blueprints screen, search for "sns" in the blueprints search bar. Select the blueprint titled **sns-message**, which is a Nodejs function.
+
+3\. On the next page, leave the event source type as SNS. For the SNS topic selection, either select the SNS topic you created earlier or if you are working in an AWS lab, insert the shared SNS topic ARN provided to you by the AWS workshop instructor. Click **Next**
+
+4\. On the "configure function" screen, name your function (ie: ZombieSensorData).
+
+5\. For the **Role**, select the "basic execution role" option. If another page opens asking you to confirm the creation of that role, click Allow through that. This role simply allows you to push events to CloudWatch Logs from Lambda.
+
+6\. Leave all other options as default on the Lambda creation page and click **Next**.
+
+7\. On the Review page, select the "Enable Now" radio button under **Enable event source**. This will enable your Lambda function to immediately begin consuming messages. Finally, click **Create function**.
+
+8\. Once the function is created, on the overview page for your Lambda function, select the **Monitoring** tab and then on the right side select **View logs in CloudWatch**.
+
+9\. You should now be on the CloudWatch Logs console page looking at the log streams for your Lambda function. 
+
+10\. As data is sent to the SNS topic, it will kick off your function to consume the messages. The blueprint you used simply logs the message data to CloudWatch Logs. Verify that events are showing up in your CloudWatch Logs stream with Zombie Sensor messages from the Intel Edison. When you have confirmed that messages are showing up, now you need to get those alerts into the Chap application for survivors to see!
+
+**HINT:** You'll want to edit your Lambda function to communicate with the Messages API in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. 
+
+**Solution with Code**
+
+**If you are unable to complete this section and would like the soluiton with the complete Lambda function, please continue reading, **.
+
+11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop contents. Copy the entire contents of this JS file and overwrite your existing function with this code.
+
+12\. In the code, modify the "host" variable under "post_options". Replace the string "INSERT YOUR API GATEWAY URL HERE" with your own API Gateway URL. It should look like xxxxxxxx.execute-api.us-west-2.amazonaws.com.
+
+13\. Once you have overwritten your old code with the code provided by AWS, click the **Save** button to save your modified Lambda function. Almost immediately you should begin seeing zombie sensor alerts showing up in the chat room in the browser which means your messages are successfully sending from the Intel Edison device to AWS and into your chat app. Congrats!
 
 * * *
