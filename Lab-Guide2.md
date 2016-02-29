@@ -169,12 +169,12 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 If you wish to utilize the Zombie Sensor as a part of the workshop, this guide will walk you through the following:
 
-* Items required to create the physical Zombie sensor  
+* Items required to create the physical Zombie sensor (not required if in an AWS workshop - a sensor is provided by AWS for motion detection)
 * How to create the AWS backend (Simple Notification Service Topic) for the Zombie detector  
 * How to install the code in the repo onto the device
 
 **Please note that this section requires purchasing equipment.** 
-####Items Required 
+**Items Required** 
 1\. One Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0).  
 2\. Within this start kit you will be using the following components for this exercise:  
 
