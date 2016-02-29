@@ -278,7 +278,7 @@ In this section you will configure a Lambda function that triggers when messages
 
 **Solution with Code**
 
-11\. To finish this section with our pre-built solution, open the **[exampleSNSFunction.js](/zombieSensor/lambda/exampleSNSFunction.js)** file from the workshop contents. Copy the entire contents of this JS file and overwrite your existing function with this code.
+11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop repo. Copy the entire contents of this JS file and overwrite your existing function with this code.
 
 12\. In the code, modify the "host" variable under "post_options". Replace the string "INSERT YOUR API GATEWAY URL HERE" with your own API Gateway URL. It should look like xxxxxxxx.execute-api.us-west-2.amazonaws.com.
 
