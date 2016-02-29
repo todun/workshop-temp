@@ -3,7 +3,7 @@
 ## All Labs must be performed in us-west-2 (Oregon)
 
 ## Lab Overview
-This workshop has several lab exercises that you can complete to extend the functionality of the base chat app that is provided. Each of these labs is an independent section and you may choose to do some or all of them.
+This workshop has several lab exercises that you can complete to extend the functionality of the base chat app that is provided when you launch the CloudFormation template provided. Each of these labs is an independent section and you may choose to do some or all of them.
 *   **Typing Indicator**  
     This exercise already has the UI and backend implemented, and focuses on how to setup the API Gateway to provide a RESTful endpoint.
 *   **SMS Integration with Twilio**  
@@ -116,7 +116,7 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 1\. Select the Amazon ElasticSearch icon from the main console page. 
 
-2\. Create a new Amazon ElasticSearch domain. Provide it a name such as "Zombie-chat-logs". Click **Next**.
+2\. Create a new Amazon ElasticSearch domain. Provide it a name such as "zombiemessages". Click **Next**.
 
 3\. On the **Configure Cluster** page, leave the default cluster settings and click **Next**. 
 
@@ -131,32 +131,32 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 8\. Take note of the Endpoint once the cluster starts, we'll need that for the Lambda function. 
 ![API Gateway Invoke URL](/Images/Search-Step8.png) 
 
-9\. Go into the Lambda service page by clicking on Lambda in the Management Console 
+9\. Go into the Lambda service page by clicking on Lambda in the Management Console. 
 
-10\. Select **Create a Lambda Function** 
+10\. Select **Create a Lambda Function**. 
 
-11\. Skip the Blueprint section by selecting the Skip button in the bottom right 
+11\. Skip the Blueprint section by selecting the Skip button in the bottom right. 
 
-12\. Fill in ZombieWorkshopSearchIndexing 
+12\. Fill in "ZombieWorkshopSearchIndexing" as the Name of the function. Keep the runtime as Node.js. You can set a description for the function if you'd like.
 
-13\. Paste in the code from the ZombieWorkshopSearchIndexing.js file 
+13\. Paste in the code from the ZombieWorkshopSearchIndexing.js file provided to you.
 
-14\. On line 7, replace ENDPOINT_HERE with the Elasticsearch endpoint created in step 8\. Make sure it starts with https:// 
+14\. On line 7 in the code provided, replace ENDPOINT_HERE with the ElasticSearch endpoint created in step 8\. Make sure it starts with https:// 
 
-15\. Under the Role, create a new DynamoDB event stream role 
+15\. Under the Role, create a new DynamoDB event stream role. When a new page opens confirming that you want to create a role, just click **Allow** to proceed. 
 
-16\. Select Next and Create Function 
+16\. Keep all the other defaults on the page set as is. Select **Next** and then on the Review page, select **Create function** to create your Lambda function. 
 
-17\. Select the "Event Sources" tab for the new ZombieWorkshopSearchIndexing function 
+17\. Select the "Event Sources" tab for the new ZombieWorkshopSearchIndexing function. 
 
-18\. Select Add event source 
+18\. Select **Add event source** 
 
-19\. Select the DynamoDB Event source type and the messages dynamodb table. You can leave the rest the default 
+19\. Select the DynamoDB Event source type and the **messages** DynamoDB table. You can leave the rest as the defaults.
 
 20\. After creation, you should see an event source that looks like this 
 ![API Gateway Invoke URL](/Images/Search-Step20.png) 
 
-21\. Now after you post messages, you can see them show up in the elasticsearch indexing 
+21\. Now after you post messages in the chat, you can see them show up in the ElasticSearch indexing. You should be able to open Kibana from the URL provided in ElasticSearch Service and begin analyzing chat messages.  
 ![API Gateway Invoke URL](/Images/Search-Done.png)
 
 * * *
