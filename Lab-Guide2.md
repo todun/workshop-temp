@@ -280,7 +280,7 @@ In this section you will configure a Lambda function that triggers when messages
 
 11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop repo. Copy the entire contents of this JS file and overwrite your existing function with this code.
 
-12\. In the code, modify the "host" variable under "post_options". Replace the string "INSERT YOUR API GATEWAY URL HERE" with your own API Gateway URL. It should look like xxxxxxxx.execute-api.us-west-2.amazonaws.com.
+12\. In the code, modify the "host" variable under "post_options". Replace the string "INSERT YOUR API GATEWAY URL HERE" with your own API Gateway URL. It should look like **xxxxxxxx.execute-api.us-west-2.amazonaws.com**.
 
 13\. Once you have overwritten your old code with the code provided by AWS, click the **Save** button to save your modified Lambda function. Almost immediately you should begin seeing zombie sensor alerts showing up in the chat room in the browser which means your messages are successfully sending from the Intel Edison device to AWS and into your chat app. This function takes the zombie sensor data, parses it, and sends it to your Chat Service with HTTPS POST requests to your **/messages** endpoint. Congrats!
 
