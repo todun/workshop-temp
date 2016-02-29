@@ -112,7 +112,50 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 ### 3\. Search over the chat messages
 
-1\. Select the Amazon Elasticsearch from the main console page 2\. Create a new Amazon Elasticsearch domain 3\. Leave the default cluster settings 4\. For access policy, select the allow access from one or more accounts and fill in the account ID 5\. Save and Select Next to the domain review page 6\. Select Confirm and Create 7\. The creation of the ELasticsearch cluster takes approximately 10 minutes 8\. Take note of the Endpoint once the cluster starts, we'll need that for the Lambda function ![API Gateway Invoke URL](/Images/Search-Step8.png) 9\. Go into the Lambda Service Page 10\. Select Create a Lambda Function 11\. Skip the Blueprint section by selecting the Skip button in the bottom right 12\. Fill in ZombieWorkshopSearchIndexing 13\. Paste in the code from the ZombieWorkshopSearchIndexing.js file 14\. On line 7, replace ENDPOINT_HERE with the Elasticsearch endpoint created in step 8\. Make sure it starts with https:// 15\. Under the Role, create a new Dynamodb event stream role 16\. Select Next and Create Function 17\. Select the "Event Sources" tab for the new ZombieWorkshopSearchIndexing function 18\. Select Add event source 19\. Select the DynamoDB Event source type and the messages dynamodb table. You can leave the rest the default 20\. After creation, you should see an event source that looks like this ![API Gateway Invoke URL](/Images/Search-Step20.png) 21\. Now after you post messages, you can see them show up in the elasticsearch indexing ![API Gateway Invoke URL](/Images/Search-Done.png)
+1\. Select the Amazon ElasticSearch icon from the main console page 
+
+2\. Create a new Amazon ElasticSearch domain. Provide it a name such as "Zombie-chat-logs". Click **Next**.
+
+3\. On the **Configure Cluster** page, leave the default cluster settings and click **Next**. 
+
+4\. For the access policy, select the **Allow or deny access to one or more AWS accounts or IAM users** option in the dropdown and fill in your account ID. Make sure "Allow" is selected for the **Effect** dropdown option. Click **OK**. 
+
+5\. Select **Next** to go to the domain review page 
+
+6\. On the Review page, select **Confirm and create** 
+
+7\. The creation of the ElasticSearch cluster takes approximately 10 minutes 
+
+8\. Take note of the Endpoint once the cluster starts, we'll need that for the Lambda function 
+![API Gateway Invoke URL](/Images/Search-Step8.png) 
+
+9\. Go into the Lambda service page by clicking on Lambda in the Management Console 
+
+10\. Select **Create a Lambda Function** 
+
+11\. Skip the Blueprint section by selecting the Skip button in the bottom right 
+
+12\. Fill in ZombieWorkshopSearchIndexing 
+
+13\. Paste in the code from the ZombieWorkshopSearchIndexing.js file 
+
+14\. On line 7, replace ENDPOINT_HERE with the Elasticsearch endpoint created in step 8\. Make sure it starts with https:// 
+
+15\. Under the Role, create a new DynamoDB event stream role 
+
+16\. Select Next and Create Function 
+
+17\. Select the "Event Sources" tab for the new ZombieWorkshopSearchIndexing function 
+
+18\. Select Add event source 
+
+19\. Select the DynamoDB Event source type and the messages dynamodb table. You can leave the rest the default 
+
+20\. After creation, you should see an event source that looks like this 
+![API Gateway Invoke URL](/Images/Search-Step20.png) 
+
+21\. Now after you post messages, you can see them show up in the elasticsearch indexing 
+![API Gateway Invoke URL](/Images/Search-Done.png)
 
 * * *
 
