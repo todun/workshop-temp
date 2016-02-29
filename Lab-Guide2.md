@@ -286,13 +286,13 @@ In this section you will configure a Lambda function that triggers when messages
 
 ### 5\. Workshop Cleanup
 
-1\. To cleanup your environment, you can click "Delete Stack" to delete all the components that were launched as a part of the lab. However, the components that you manually launched after the stack was created need to be deleted manually.
+1\. To cleanup your environment, you can click "Delete Stack" to delete all the components that were launched as a part of the lab. However, the components that you manually launched in the above labs after the stack was created need to be deleted manually.
 
 2\. Be sure to delete the ElasticSearch cluster and the associated Lambda function that you created for the ElasticSearch lab. 
 
 3\. Be sure to delete the Lambda function created as a part of the Slack lab.
 
-4\. Please delete the SNS topic (if you created one) and the Lambda function that you created in the Zombie Sensor lab.
+4\. Be sure to delete the SNS topic (if you created one) and the Lambda function that you created in the Zombie Sensor lab.
 
 5\. Once those resources have been deleted, go to the CloudFormation console and find the Stack that you launched in the beginning of the workshop. Select it and click **Delete Stack**. When the stack has been successfully deleted, it should no longer display in the list of stacks. If you run into any issues deleting stacks, please notify a workshop instructor or contact [AWS Support](https://console.aws.amazon.com/support/home) for additional assistance. 
 
