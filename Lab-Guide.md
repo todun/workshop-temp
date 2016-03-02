@@ -110,7 +110,7 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 10\. Click **Save** to finalize the setup connecting Twilio to your /twilio URL. 
 
-11\. You will now create the Lambda Function that processes your incoming Twilio messages, parses them, and pushes them the "/messages" Chat Service. To begin, navigate to the Lambda console.
+11\. You will now create the Lambda Function that processes your incoming Twilio messages, parses them, and pushes them to the "/messages" Chat Service. To begin, navigate to the Lambda console.
 
 12\. Click **Create a Lambda function** and select **Skip** on the blueprint screen as we will be creating a brand new function.
 
