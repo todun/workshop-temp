@@ -148,7 +148,7 @@ In the text editor, copy the following into the editor:
 
 Click the little checkmark icon to continue.
 
-This should look like the screenshot below:
+The result should look like the screenshot below:
 ![Twilio Integration Response Mapping Template](/Images/Twilio-Step26.png) 
 
 27\. Click the blue **Save** button on the screen. Finally click the blue **Deploy API** button on the left side of the API Gateway console to deploy your API. In the Deploy API window, select **ZombieWorkshopStage** from the dropdown and click **Deploy**.
