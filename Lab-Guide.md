@@ -132,7 +132,11 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 21\. On the Integration Request screen for your /twilio POST method, expand the **Mapping Templates** section and click **Add mapping template**. In the textbox for "Content-Type", input **application/x-www-form-urlencoded** and click the little checkmark button to continue. Once you have clicked the little checkbox, a new section will appear on the right side of the screen called "Input passthrough". Click the pencil icon next to "Input passthrough". In the dropdown that appears, select the **Mapping template** option. 
 
-22\. A "Template" text editor window will appear. In this section you will input a piece of VTL transformation logic to convert the incoming Twilio data to a JSON object. In this text editor, copy **{"postBody" : "$input.path('$')"}** into the editor. Leave the "Select a model to generate a template" dropdown as is. After copying the code into the editor, click the little checkmark icon next to the "Mapping template" dropdown. You have now setup the POST method to convert the incoming data to JSON anytime a POST request is made to your /twilio endpoint with a Content-Type of "application/x-www-form-urlencoded". This should look like the screenshot below:
+22\. A "Template" text editor window will appear. In this section you will input a piece of VTL transformation logic to convert the incoming Twilio data to a JSON object. In this text editor, copy the following code into the editor. 
+
+```{"postBody" : "$input.path('$')"}``` 
+
+Leave the "Select a model to generate a template" dropdown as is. After copying the code into the editor, click the little checkmark icon next to the "Mapping template" dropdown. You have now setup the POST method to convert the incoming data to JSON anytime a POST request is made to your /twilio endpoint with a Content-Type of "application/x-www-form-urlencoded". This should look like the screenshot below:
 ![Twilio Integration Request Mapping Template](/Images/Twilio-Step22.png) 
 
 23\. Now that you have configured the Integration Request to transform incoming messages into JSON, we need to configure the Integration Response to transform outgoing responses into XML since the Twilio API requires XML as a response Content-Type. This step is required so that when you send SMS messages to the Chat Service, it can respond back to your Twilio Phone Number with a confirmation message that you successfully sent SMS to the Survivor Chat Service.
