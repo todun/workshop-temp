@@ -142,9 +142,11 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 25\. Click **Add mapping template** similar to the way you did this in the earlier steps for the Integration Request section. 
 
 26\. In the "Content-Type" text box, insert **application/xml** and click the little black checkmark to continue. Similar to the steps done earlier, we are going to copy VTL mapping logic to convert the response data to XML from JSON. This will result in your /twilio POST method responding to requests with XML format. A new section will appear on the right side of the screen called "Output passthrough". Click the pencil icon next to "Output passthrough". In the dropdown that appears, select the **Mapping template** option. 
-In the text editor, copy the following into the editor and click the little checkmark icon to continue. 
+In the text editor, copy the following into the editor: 
 
 ``` #set($inputRoot = $input.path('$'))<?xml version="1.0" encoding="UTF-8"?><Response><Message><Body>$inputRoot</Body></Message></Response> ``` 
+
+Click the little checkmark icon to continue.
 
 This should look like the screenshot below:
 ![Twilio Integration Response Mapping Template](/Images/Twilio-Step26.png) 
