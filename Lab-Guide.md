@@ -374,18 +374,17 @@ In this section you will configure a Lambda function that triggers when messages
 
 10\. As data is sent to the SNS topic, it will trigger your function to consume the messages. The blueprint you used simply logs the message data to CloudWatch Logs. Verify that events are showing up in your CloudWatch Logs stream with Zombie Sensor messages from the Intel Edison. On the **Monitoring** tab for the function (as you did in Step 8), click the link **View logs in CloudWatch**. When you have confirmed that messages from Intel are showing up, now you need to get those alerts into the Chat application for survivors to see!
 
-**HINT:** 
-You'll want to edit your Lambda function to communicate with the **/messages** endpoint in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. Modify your Lambda function to finish this section using the skills you've learned so far with Lambda!
+**HINT:** You'll want to edit your Lambda function to communicate with the **/messages** endpoint in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. Modify your Lambda function to finish this section using the skills you've learned so far with Lambda!
 
 **If you are unable to complete this section and would like the solution with the complete Lambda function to finish this section, please continue reading**.
 
 **Solution with Code**
 
-11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop repo. Copy the entire contents of this JS file and overwrite your existing function with this code.
+11\. To finish this section with our pre-built solution, open the **exampleSNSFunction.js** file from the workshop GitHub repository. Copy the entire contents of this JS file and overwrite your existing Lambda Function with this code.
 
-12\. In the code, modify the "host" variable under "post_options". Replace the string "INSERT YOUR API GATEWAY URL HERE" with your own API Gateway URL. It should look like **xxxxxxxx.execute-api.us-west-2.amazonaws.com**.
+12\. In the code, modify the "host" variable under "post_options". Replace the string "INSERT YOUR API GATEWAY URL HERE" with your own URL for the **/messages** endpoint for the **POST** method. This is the "Invoke URL" which you can grab from the Stages page in the API Gateway console. It should look like **xxxxxxxx.execute-api.us-west-2.amazonaws.com**. Remember, don't input the "https://" portion of the URL, or anything after the ".com" portion.
 
-13\. Once you have overwritten your old code with the code provided by AWS, click the **Save** button to save your modified Lambda function. Almost immediately you should begin seeing zombie sensor alerts showing up in the chat room in the browser which means your messages are successfully sending from the Intel Edison device to AWS and into your chat app. This function takes the zombie sensor data, parses it, and sends it to your Chat Service with HTTPS POST requests to your **/messages** endpoint. Congrats!
+13\. Once you have overwritten your old code with the code provided by AWS, click the **Save** button to save your modified Lambda function. Almost immediately you should begin seeing zombie sensor messages showing up in the chat application which means your messages are successfully sending from the Intel Edison device to AWS, and into your chat application. This Lambda Function takes the zombie sensor message, parses it, and sends it to your chat application with an HTTPS POST request to your **/messages** endpoint. Congrats!
 
 ### 6\. Workshop Cleanup
 
