@@ -20,7 +20,7 @@ This workshop has several lab exercises that you can complete to extend the func
 * * *
 
 ### Let's Begin! Launch the CloudFormation Stack
-1\. To begin this workshop, login to the AWS Management Console and navigate to the CloudFormation service. Make sure you are in the us-west-2 (Oregon) region. This is displayed in the upper-right side of the black navigation bar in the Management Console. If you are not in Oregon, click the region and change it to us-west-2.
+1\. To begin this workshop, login to the AWS Management Console and navigate to the CloudFormation service. Make sure you are in the us-west-2 (Oregon) region. This is displayed in the upper-right side of the black navigation bar in the Management Console. If you are not in Oregon, click the region and change it to us-west-2 (Oregon).
 
 2\. Copy the CloudFormation template from the GitHub repo to your local machine. This template is named **CreateZombieWorkshop.json**.
 
@@ -28,7 +28,21 @@ This workshop has several lab exercises that you can complete to extend the func
 
 4\. On the "Specify Details" page, give your Stack a name, such as "ZombieWorkshopStack".
 
-5\. For the parameter section, if you want to develop with a team and would like to create IAM Users in your account to grant them access, then specify how many teammates/users you want to be created in the **NumberOfIAMUsers** box. Otherwise, leave it defaulted to 0 and no additional users will be created. 
+5\. For the parameter section, if you want to develop with a team and would like to create IAM Users in your account to grant them access, then specify how many teammates/users you want to be created in the **NumberOfIAMUsers** box. Otherwise, leave it defaulted to 0 and no additional users will be created. Click **Next**.
+
+6\. On the "Options" page, leave the defaults and click **Next**.
+
+7\. On the "Review" page, verify your selections, then scroll to the bottom and acknowledge that your Stack will launch IAM resources for you. Then click **Create** to launch your stack. 
+
+8\. Your stack will take about 3 minutes to launch and you can track its progress in the "Events" tab. When it is done creating, the status will change to "CREATE_COMPLETE".
+
+9\. Click the "Outputs" tab and click the link for "MyChatRoomURL". This should open your chat application in a new tab. 
+
+10\. In your chat application, type your name (or a fun username!) in the "User Name" field, then begin typing messages in the textbox at the bottom of the screen where it displays "Enter a message and save humanity".
+
+11\. Your messages should begin showing up in the central chat pane window. Feel free to share the URL with your teammates, have them login and begin chatting as a group!
+
+**The baseline chat application is now configured and functional! There is still important functionality missing and the Lambda Signal Corps needs you to build it out...so get started below!**
 
 ### 1\. Typing Indicator
 
