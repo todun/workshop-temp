@@ -247,9 +247,9 @@ The result should look like the screenshot below:
     ]
 }
 ```
-27\. This new policy you have copied over includes a new Allow action, ```es:*``` which allows the role all actions on the Amazon ElasticSearch Service. Click the **Validate Policy** button and ensure that AWS returns a successful message, "The Policy is valid". Then select **Apply Policy** to save it.
+27\. This new policy you have copied over includes a new Allow action, ```es:*``` which allows the role all actions on the Amazon ElasticSearch Service. Click the **Validate Policy** button and ensure that AWS returns a successful message "The Policy is valid". Then select **Apply Policy** to save it.
 
-21\. Now after you post messages in the chat, you can see them show up in the ElasticSearch indexing. You should be able to see that messages are being indexed in the "Indices" section for your cluster in the ElasticSearch Service console.
+28\. Now with the IAM permissions in place, your messages posted in the chat from this point forward will be indexed to ElasticSearch. Post a few messages in the chat. You should be able to see that messages are being indexed in the "Indices" section for your cluster in the ElasticSearch Service console.
 ![API Gateway Invoke URL](/Images/Search-Done.png)
 
 * * *
