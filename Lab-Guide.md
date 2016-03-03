@@ -19,6 +19,17 @@ This workshop has several lab exercises that you can complete to extend the func
 
 * * *
 
+### Let's Begin! Launch the CloudFormation Stack
+1\. To begin this workshop, login to the AWS Management Console and navigate to the CloudFormation service. Make sure you are in the us-west-2 (Oregon) region. This is displayed in the upper-right side of the black navigation bar in the Management Console. If you are not in Oregon, click the region and change it to us-west-2.
+
+2\. Copy the CloudFormation template from the GitHub repo to your local machine. This template is named **CreateZombieWorkshop.json**.
+
+3\. Click the blue **Create Stack** button. On the "Select Template" page, click **Browse**, and upload the template you downloaded in the previous step. Click **Next**.
+
+4\. On the "Specify Details" page, give your Stack a name, such as "ZombieWorkshopStack".
+
+5\. For the parameter section, if you want to develop with a team and would like to create IAM Users in your account to grant them access, then specify how many teammates/users you want to be created in the **NumberOfIAMUsers** box. Otherwise, leave it defaulted to 0 and no additional users will be created. 
+
 ### 1\. Typing Indicator
 
 The typing indicator shows up in the web chat client. It's a section above the post message input that shows when other survivors are typing. The UI and backend Lambda functions have been implemented, and this lab focuses on how to enable the feature in API Gateway.
