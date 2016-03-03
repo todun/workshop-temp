@@ -285,21 +285,19 @@ An example output message from the Intel Edison:
 
 A simple workflow of this architecture is: 
 
-Intel Edison -> Public SNS topic in central account -> Your AWS Lambda functions subscribed to the topic. 
+Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic. 
 
 ####Creating the AWS Backend 
 
-**If you are following this guide during a workshop presented by AWS, please ignore the following steps 2-4\. An SNS topic should already be configured for the workshop particants to consume messages from.** 
+**If you are following this guide during a workshop presented by AWS, please ignore the following steps 2-4\. An SNS topic should already be configured for the workshop particants to consume messages from. That SNS topic ARN will be provided to you.** 
 
-1\. Firstly, you will need to have an AWS Account. If you do not already have one, you can sign up [here](https://aws.amazon.com). 
-
-2\. We will now create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click 'Topics' in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic. 
+1\. We will now create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click 'Topics' in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic. 
 ![Create Topic Screenshot](Images/MotionSensor-createTopic.png) 
 
-3\. You will now need to edit the topic polciy to permit any AWS account to subscribe lambda functions to your SNS topic. Check the check box next to your new topic, and then click Actions -> Edit topic policy. You need to configure these settings presented as per the below screenshot. Then click Update Policy. This step is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic. 
+2\. You will now need to edit the topic polciy to permit any AWS account to subscribe lambda functions to your SNS topic. Check the check box next to your new topic, and then click Actions -> Edit topic policy. You need to configure these settings presented as per the below screenshot. Then click Update Policy. This step is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic. 
 ![Edit Topic Policy Screenshot](/Images/MotionSensor-createTopicPolicy.png) 
 
-4\. You now have your central SNS topic configured and ready to use. Ensure that you make a note of the Topic ARN and region where you have created the topic, you will need it in some of the following steps. 
+3\. You now have your central SNS topic configured and ready to use. Ensure that you make a note of the Topic ARN and region where you have created the topic, you will need it in some of the following steps. 
 
 ####Installing the application on the Intel Edison 
 **If you are following this guide during a workshop presented by AWS, please ignore this section. An Intel Edison board should already be configured for the workshop particants to consume messages from.** 
