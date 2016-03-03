@@ -289,12 +289,12 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 
 ####Creating the AWS Backend 
 
-**If you are following this guide during a workshop presented by AWS, please ignore the following steps 2-4\. An SNS topic should already be configured for the workshop particants to consume messages from. That SNS topic ARN will be provided to you.** 
+**If you are following this guide during a workshop presented by AWS, please ignore the steps below, 1-3\. An SNS topic should already be configured for the workshop particants to consume messages from. That SNS topic ARN will be provided to you.** 
 
-1\. We will now create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click 'Topics' in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic. 
+1\. Create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click **Topics** in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic. 
 ![Create Topic Screenshot](Images/MotionSensor-createTopic.png) 
 
-2\. You will now need to edit the topic polciy to permit any AWS account to subscribe lambda functions to your SNS topic. Check the check box next to your new topic, and then click Actions -> Edit topic policy. You need to configure these settings presented as per the below screenshot. Then click Update Policy. This step is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic. 
+2\. You will now need to edit the topic polciy to permit any AWS account to subscribe lambda functions to your SNS topic. Select the check box next to your new topic, and then click **Actions -> Edit topic policy**. You need to configure these settings presented as shown the below screenshot. Then click **Update Policy**. This part is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic. 
 ![Edit Topic Policy Screenshot](/Images/MotionSensor-createTopicPolicy.png) 
 
 3\. You now have your central SNS topic configured and ready to use. Ensure that you make a note of the Topic ARN and region where you have created the topic, you will need it in some of the following steps. 
@@ -302,11 +302,11 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 ####Installing the application on the Intel Edison 
 **If you are following this guide during a workshop presented by AWS, please ignore this section. An Intel Edison board should already be configured for the workshop particants to consume messages from.** 
 
-1\. First, You will need to get your Edison board set up. You can find a getting started guide for this on the Intel site [here](https://software.intel.com/en-us/articles/assemble-intel-edison-on-the-arduino-board). Note that for the purpose of this tutorial, we will be writing our client code for the Edison in node.js and will therefore be using the Intel® XDK for IoT (referred to as 'XDK' from here on) as our IDE. 
+1\. First, you will need to get your Edison board set up. You can find a getting started guide for this on the Intel site [here](https://software.intel.com/en-us/articles/assemble-intel-edison-on-the-arduino-board). Note that for the purpose of this tutorial, we will be writing our client code for the Edison in Node.js and will therefore be using the Intel® XDK for IoT (referred to as 'XDK' from here on, and which you will need to install) as our IDE. 
 
 2\. You will need to physically connect the Grove PIR Motion Sensor to pin D6 on the breakout board. 
 
-3\. Download all of the code from the 'zombieIntelEdisonCode' folder in this repository and store it in a folder locally on your machine. This simply consists of a main.js file (our application) and our package.json (our app dependencies). 
+3\. Download all of the code from the 'zombieIntelEdisonCode' folder in the GitHub repository and store it in a folder locally on your machine. This simply consists of a main.js file (our application) and our package.json (our app dependencies). 
 
 4\. Navigate to the homepage in the XDK and start a new project. 
 
@@ -319,6 +319,8 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 8\. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Your IAM policy for the user should look like the following: 
 
 ``` { "Version": "2012-10-17", "Statement": [ { "Action": [ "sns:Publish" ], "Effect": "Allow", "Resource": "ENTER YOUR SNS TOPIC ARN HERE" } ] } ``` 
+
+**It is important to create a new IAM User of which these Access and Secret Access Keys will be associated with. Even though AWS does not recommend baking keys into applications, it is an acceptable practice if those keys are associated with a locked down IAM User!**
 
 9\. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNS topic. 
 
