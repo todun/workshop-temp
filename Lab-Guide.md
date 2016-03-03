@@ -263,8 +263,8 @@ The result should look like the screenshot below:
 If you wish to utilize the Zombie Sensor as a part of the workshop, this guide will walk you through the following:
 
 * Items required to create the physical Zombie sensor
-* How to create the AWS backend (Simple Notification Service Topic) for the Zombie detector  
-* How to install the code in the repo onto the device
+* How to create the AWS backend (Simple Notification Service Topic) for the Zombie Sensor  
+* How to install the Node.js device code provided in this workshop onto the device
 
 **Please note that this section requires purchasing equipment if you are setting this up on your own outside of the workshop.** 
 
