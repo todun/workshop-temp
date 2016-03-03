@@ -316,7 +316,7 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 
 7\. You now need to edit the code in main.js to include your AWS credentials and the SNS topic that you have created. Firstly, we'll need some AWS credentials. 
 
-8\. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Your IAM policy for the user should look like the following: 
+8\. You will need to create an IAM User with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM Users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Your IAM policy for the user should look like the following: 
 
 ``` 
 {
@@ -328,8 +328,6 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
     }]
 } 
 ``` 
-
-**It is important to create a new IAM User of which these Access and Secret Access Keys will be associated with. Even though AWS does not recommend baking keys into applications, it is an acceptable practice if those keys are associated with a locked down IAM User!**
 
 9\. Now let's add your credentials to the client side code. Edit the following line in main.js to include your user access keys and the region where you have set up your SNS topic. 
 
@@ -345,26 +343,26 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 
 12\. You now need to connect the XDK to your Intel Edison device. There is a guide on the Intel site on how to do this [here](https://software.intel.com/en-us/getting-started-with-the-intel-xdk-iot-edition) under the 'Connect to your Intel® IoT Platform' section. 
 
-13\. You now need to build the app and push it to your device. Firstly hit the build/install icon, this looks like a hammer in the XDK. It may take a couple of minutes to install the required packages etc. 
+13\. You now need to build the app and push it to your device. First, hit the build/install icon, this looks like a hammer in the XDK. It may take a couple of minutes to install the required packages etc. 
 
 14\. Once the app has been built succesfully, you can run the app by pressing the run icon, this looks like a circuit board with a green 'play' sign. 
 
-15\. Your app should now be running on the Edison device and your messages being published to the SNS topic. You can now consume this topic and do something meaningful with the Zombie alerts. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Continue below to learn how to integrate the SNS notifications into the chat application. 
+15\. Your app should now be running on the Edison device and your messages being published to the SNS topic. You can consume these messages using AWS Lambda. There is some documentation to get you started [here](http://docs.aws.amazon.com/sns/latest/dg/sns-lambda.html). Continue below to learn how to integrate the SNS notifications into the chat application. 
 
 ####Consuming the SNS Topic Messages with AWS Lambda 
 
-To help you get started consuming the Zombie Sensor data, We have created a sample lambda function in node.js that, once subscribed to the SNS topic as per the above mentioned documentation, simply consumes the messages and logs them to Cloudwatch logs. This sample can be found in this repository under lambda/exampleSNSFunction.js. Using the things learned in this workshop, can you develop a Lambda function that alerts survivors of zombies? 
-In this section you will configure a Lambda function that triggers when messages are sent from the Edison device to the SNS topic. 
+Using the things learned in this workshop, can you develop a Lambda function that alerts survivors in the chat application of zombies? 
+In this section you will configure a Lambda function that triggers when messages are sent from the Edison device to the SNS topic. This will push the messages to the chat application to notify survivors! 
 
 1\. Open up the Lambda console and create a new Lambda function.
 
-2\. On the blueprints screen, search for "sns" in the blueprints search bar. Select the blueprint titled **sns-message**, which is a Nodejs function.
+2\. On the blueprints screen, search for "sns" in the blueprints search box. Select the blueprint titled **sns-message**, which is a Nodejs function.
 
-3\. On the next page, leave the event source type as SNS. For the SNS topic selection, either select the SNS topic you created earlier or if you are working in an AWS lab, insert the shared SNS topic ARN provided to you by the AWS workshop instructor. Click **Next**
+3\. On the next page, leave the event source type as "SNS". For the SNS topic selection, either select the SNS topic you created earlier (if you're working on this outside of a workshop) or if you are working in an AWS workshop, insert the shared SNS topic ARN provided to you by the AWS organizer. Click **Next**.
 
-4\. On the "configure function" screen, name your function (ie: ZombieSensorData).
+4\. On the "Configure Function" screen, name your function "ZombieSensorData".
 
-5\. For the **Role**, select the "basic execution role" option. If another page opens asking you to confirm the creation of that role, click Allow through that. This role simply allows you to push events to CloudWatch Logs from Lambda.
+5\. For the **Role**, select the "basic execution role" option. On the pop-up page asking you to confirm the creation of that role, click **Allow** through that. This role simply allows you to push events to CloudWatch Logs from Lambda.
 
 6\. Leave all other options as default on the Lambda creation page and click **Next**.
 
@@ -374,11 +372,12 @@ In this section you will configure a Lambda function that triggers when messages
 
 9\. You should now be on the CloudWatch Logs console page looking at the log streams for your Lambda function. 
 
-10\. As data is sent to the SNS topic, it will kick off your function to consume the messages. The blueprint you used simply logs the message data to CloudWatch Logs. Verify that events are showing up in your CloudWatch Logs stream with Zombie Sensor messages from the Intel Edison. When you have confirmed that messages are showing up, now you need to get those alerts into the Chap application for survivors to see!
+10\. As data is sent to the SNS topic, it will trigger your function to consume the messages. The blueprint you used simply logs the message data to CloudWatch Logs. Verify that events are showing up in your CloudWatch Logs stream with Zombie Sensor messages from the Intel Edison. On the **Monitoring** tab for the function (as you did in Step 8), click the link **View logs in CloudWatch**. When you have confirmed that messages from Intel are showing up, now you need to get those alerts into the Chat application for survivors to see!
 
-**HINT:** You'll want to edit your Lambda function to communicate with the **/messages** endpoint in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. 
+**HINT:** 
+You'll want to edit your Lambda function to communicate with the **/messages** endpoint in API Gateway, which sends the messages to the **Messages** DynamoDB table so that the chat room can see the alerts when Zombies are detected. Modify your Lambda function to finish this section using the skills you've learned so far with Lambda!
 
-**If you are unable to complete this section and would like the solution with the complete Lambda function to finish this lab, please continue reading**.
+**If you are unable to complete this section and would like the solution with the complete Lambda function to finish this section, please continue reading**.
 
 **Solution with Code**
 
@@ -400,6 +399,8 @@ In this section you will configure a Lambda function that triggers when messages
 
 5\. Be sure to delete the SNS topic (if you created one) and the Lambda function that you created in the Zombie Sensor lab.
 
-6\. Once those resources have been deleted, go to the CloudFormation console and find the Stack that you launched in the beginning of the workshop, select it, and click **Delete Stack**. When the stack has been successfully deleted, it should no longer display in the list of stacks. If you run into any issues deleting stacks, please notify a workshop instructor or contact [AWS Support](https://console.aws.amazon.com/support/home) for additional assistance. 
+6\. Navigate to CloudWatch Logs and make sure to delete unnecessary Log Groups if they exist.   
+
+7\. Once those resources have been deleted, go to the CloudFormation console and find the Stack that you launched in the beginning of the workshop, select it, and click **Delete Stack**. When the stack has been successfully deleted, it should no longer display in the list of Active stacks. If you run into any issues deleting stacks, please notify a workshop instructor or contact [AWS Support](https://console.aws.amazon.com/support/home) for additional assistance. 
 
 * * *
