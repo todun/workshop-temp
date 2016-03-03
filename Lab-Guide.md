@@ -271,13 +271,15 @@ If you wish to utilize the Zombie Sensor as a part of the workshop, this guide w
 **Items Required** 
 
 1\. One Intel® Edison and Grove IoT Starter Kit Powered by AWS. This can be purchased [here](http://www.amazon.com/gp/product/B0168KU5FK?*Version*=1&*entries*=0).  
-2\. Within this start kit you will be using the following components for this exercise:  
+2\. Within this starter kit you will be using the following components for this exercise:  
 
 * Intel® Edison for Arduino  
 * Base Shield  
 * USB Cable; 480mm-Black x1  
 * USB Wall Power Supply x1  
-* Grove - PIR Motion Sensor The application code is a very simple app that publishes a message to an Amazon Simple Notification Service (SNS) queue when motion is detected on the Grove PIR Motion Sensor. For the purpose of a workshop, this should be done only once in a central account by the workshop organiser, the topic will be made public so that the various teams are able to subscribe to this topic and make use of it during the workshop. 
+* Grove - PIR Motion Sensor: The application code is a very simple app that publishes a message to an Amazon Simple Notification Service (SNS) topic when motion is detected on the Grove PIR Motion Sensor. For the purpose of a workshop, this should be done only once in a central account by the workshop organizer - the SNS topic will be made public so that participants can subscribe to this topic and make use of it during the workshop. 
+
+An example output of the message from the Intel Edison:
 
 ``` {"message":"A Zombie has been detected in London!", "value":"1", "city":"London", "longtitude":"-0.127758", "lattitude":"51.507351"} ``` 
 
