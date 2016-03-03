@@ -202,8 +202,51 @@ The result should look like the screenshot below:
 
 19\. Select the DynamoDB Event source type and the **messages** DynamoDB table. You can leave the rest as the defaults.
 
-20\. After creation, you should see an event source that looks like this 
+20\. After creation, you should see an event source that is similar to the screenshot below:  
 ![API Gateway Invoke URL](/Images/Search-Step20.png) 
+
+21\. In the above step, we configured [DynamoDB Streams](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html) to capture incoming messages on the table and trigger a Lambda function to push them to our ElasticSearch cluster.
+
+22\. The "lambda_dynamo_streams" role that you selected for your Lambda function earlier does not currently have permissions to write to your ElasticSearch cluster. We will configure that now.
+
+23\. Navigate to **Identity and Access Management (IAM)** in the AWS Management Console. The icon for this service is green and is listed under the "Security & Identity" section.
+
+24\. In the Identity and Access Management console, select the link for **Roles**. [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html), similar to users, have permissions that you associate with them, which allows you to define what access can be granted to various entities. Roles can be assumed by EC2 Instances, Lambda Functions, and other applications and services. 
+
+25\. In the "Filter" textbox on the Roles screen, type in **lambda_dynamo_streams** and click on the role. This is the role you assigned to your ZombieWorkshopSearchIndexing function earlier.
+
+26\. Scroll to the "Inline Policies" section where you will find a policy similar to "oneClick_lambda_dynamo_streams_xxxxxxxxxx". Click **Edit Policy** to edit the policy.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:DescribeStream",
+                "dynamodb:ListStreams",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "es:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 21\. Now after you post messages in the chat, you can see them show up in the ElasticSearch indexing. You should be able to see that messages are being indexed in the "Indices" section for your cluster in the ElasticSearch Service console.
 ![API Gateway Invoke URL](/Images/Search-Done.png)
