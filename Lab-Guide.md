@@ -266,7 +266,7 @@ If you wish to utilize the Zombie Sensor as a part of the workshop, this guide w
 * How to create the AWS backend (Simple Notification Service Topic) for the Zombie Sensor  
 * How to install the Node.js device code provided in this workshop onto the device
 
-**Please note that this section requires an IoT device that can emit messages to SNS. If you are setting this up on your own device outside of the workshop, please proceed through the sections below to do that, otherwise skip the device setup instructions as the device has been setup by AWS for you.** 
+**Please note that this section requires an IoT device that can emit messages to SNS. If you are setting this up on your own device outside of the workshop, please proceed through the sections below to do that, otherwise skip the device setup instructions as the device has been setup by AWS for you by the workshop instructor.** 
 
 **Items Required** 
 
