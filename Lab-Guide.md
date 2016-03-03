@@ -40,7 +40,7 @@ This workshop has several lab exercises that you can complete to extend the func
 
 10\. In your chat application, type your name (or a fun username!) in the "User Name" field, then begin typing messages in the textbox at the bottom of the screen where it displays "Enter a message and save humanity".
 
-11\. Your messages should begin showing up in the central chat pane window. Feel free to share the URL with your teammates, have them login and begin chatting as a group!
+11\. Your messages should begin showing up in the central chat pane window. Feel free to share the URL with your teammates, have them login and begin chatting as a group! If building this solution solo, you can logout and log back in with a different User Name to simulate multiple users.
 
 **The baseline chat application is now configured and functional! There is still important functionality missing and the Lambda Signal Corps needs you to build it out...so get started below!**
 
