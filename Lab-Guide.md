@@ -294,7 +294,7 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 1\. Create the SNS Topic. Navigate to the SNS product page within the AWS Management Console and click **Topics** in the left hand menu. Then click on 'Create New Topic'. You will be presented with the following window. Fill in the fields with your desired values and click create topic. 
 ![Create Topic Screenshot](Images/MotionSensor-createTopic.png) 
 
-2\. You will now need to edit the topic polciy to permit any AWS account to subscribe lambda functions to your SNS topic. Select the check box next to your new topic, and then click **Actions -> Edit topic policy**. You need to configure these settings presented as shown the below screenshot. Then click **Update Policy**. This part is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic. 
+2\. You will now need to edit the topic policy to permit any AWS account to subscribe lambda functions to your SNS topic. Select the check box next to your new topic, and then click **Actions -> Edit topic policy**. You need to configure these settings presented as shown the below screenshot. Then click **Update Policy**. This part is what allows others (perhaps teammates working on this lab with you, to consume notifications from your SNS topic. 
 ![Edit Topic Policy Screenshot](/Images/MotionSensor-createTopicPolicy.png) 
 
 3\. You now have your central SNS topic configured and ready to use. Ensure that you make a note of the Topic ARN and region where you have created the topic, you will need it in some of the following steps. 
@@ -318,7 +318,16 @@ Intel Edison -> SNS topic -> Your AWS Lambda functions subscribed to the topic.
 
 8\. You will need to create an IAM user with Access and Secret Access Keys for your Edison to publish messages to your SNS topic. There is a guide on how to create IAM users [here](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Your IAM policy for the user should look like the following: 
 
-``` { "Version": "2012-10-17", "Statement": [ { "Action": [ "sns:Publish" ], "Effect": "Allow", "Resource": "ENTER YOUR SNS TOPIC ARN HERE" } ] } ``` 
+``` 
+{
+    "Version": "2012-10-17", 
+    "Statement": [{ 
+        "Action": [ "sns:Publish" ], 
+        "Effect": "Allow", 
+        "Resource": "ENTER YOUR SNS TOPIC ARN HERE" 
+    }]
+} 
+``` 
 
 **It is important to create a new IAM User of which these Access and Secret Access Keys will be associated with. Even though AWS does not recommend baking keys into applications, it is an acceptable practice if those keys are associated with a locked down IAM User!**
 
