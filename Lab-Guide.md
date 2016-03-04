@@ -22,7 +22,7 @@ This workshop has several lab exercises that you can complete to extend the func
 ### Let's Begin! Launch the CloudFormation Stack
 1\. To begin this workshop, login to the AWS Management Console and navigate to the CloudFormation service. Make sure you are in the us-west-2 (Oregon) region. This is displayed in the upper-right side of the black navigation bar in the Management Console. If you are not in Oregon, click the region and change it to us-west-2 (Oregon).
 
-2\. Copy the CloudFormation template from the GitHub repo to your local machine. This template is named **CreateZombieWorkshop.json**.
+2\. Copy the CloudFormation template from the GitHub repo to your local machine. This template is named **CreateZombieWorkshop.json**. You can download it [here](https://s3-us-west-2.amazonaws.com/reinvent-wrk305-2015/CreateZombieWorkshop.json). 
 
 3\. Click the blue **Create Stack** button. On the "Select Template" page, click **Browse**, and upload the template you downloaded in the previous step. Click **Next**.
 
