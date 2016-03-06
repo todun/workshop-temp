@@ -485,7 +485,7 @@ In this section you will configure a Lambda function that triggers when messages
 
 3\. Be sure to delete the ElasticSearch cluster and the associated Lambda function that you created for the ElasticSearch lab. 
 
-4\. Be sure to delete the Lambda function created as a part of the Slack lab and the Slack API resource. Also delete Slack if you no longer want an account.
+4\. Be sure to delete the Lambda function created as a part of the Slack lab. Also delete Slack if you no longer want an account.
 
 5\. Be sure to delete the SNS topic (if you created one) and the Lambda function that you created in the Zombie Sensor lab.
 
