@@ -280,6 +280,53 @@ The result should look like the screenshot below:
 * * *
 
 ### 4\. Slack Integration
+In this section, you'll create a slack group and wire it up to the Chat Service. Survivors comminicating on Slack can send messages to survivors in the Zombie Chat App.
+
+1\. Go to [http://www.slack.com](http://www.slack.com) and create a username, as well as a team.
+
+2\. Once logged into Slack, navigate to [https://slack.com/apps](https://slack.com/apps) and click **Configure** near the top of the page.
+
+3\. On the "Configure" page, select **Custom Integrations** and then **Slack Commands** to create a Slack Command. Slash commands allow you to define a command that will trigger commands to execute. In this case you'll configure your Slash Command to make a POST request to an external URL.
+
+4\. On the Slash Commands page, define a command in the **Commands** text box. Insert **/survivors** as your Slack Command.
+
+5\. Make sure the **Method** section has "POST" selected from the dropdown options. Then scroll to the **Token** section and copy the Token (or generate a new one) to a text file as you'll need it in the following steps. 
+
+6\. Keep the Slack browser tab open and in another tab navigate to the Lambda service in the AWS Management Console.
+
+7\. Click **Create a Lambda function**. You'll create a Lambda function to parse incoming Slack messages and send them to the Chat Service.
+
+8\. We'll use a blueprint here - in the blueprint filter box, type in **slack** and click the Lambda function titled **slack-echo-command**, which should be a Node.js function.
+
+9\. Name the function **SlackService**. **Delete all of the code in the inline edit window.** For this workshop, we've modified the blueprint to do some additional parsing as well as make an HTTPS request to the Chat Service.
+
+10\. Open the **SlackService.js** file from the GitHub repo. Copy the entire contents of this js file into the Lambda inline edit window.
+
+11\. Input the Slack Token string that you copied earlier into function. You should copy the string in the "token" variable replacing the string **INSERT YOUR TOKEN FROM SLACK HERE** with your own token.
+
+12\. Scroll down to the Role dropdown and select **Basic execution role**. On the verification window that appears to confirm the role, click **Allow**. This Lambda function will not interact with any AWS services. It does emit event data to CloudWatch Logs but that permission is provided by default with the basic execution role.
+
+13\. Click **Next**. Now since we are using a Lambda blueprint, the Lambda function creation process will take you through an abbreviated setup of the API Gateway resource that will be associated with this Slack Service function. You should be on a page named **Configure endpoints**.
+
+14\. On the **Configure endpoints** page, change the API Gateway to **Zombie Workshop API Gateway**, the Resource name to **slack**, the Method to **POST**, and the Security to **Open**. The final configuration should match the configurations shown below:
+![Slack API Endpoint Configuration](/Images/Slack-Step1.png)
+
+**We're leaving our API Gateway endpoints open in this workshop. This is to allow survivors (or your teammates) to help you extend functionality freely. In production we recommend locking down the security of these resources**.
+
+15\. Click **Next** and on the Review page, click **Create function**. Your Lambda function will be created as well as the Slack resource in API Gateway.
+
+16\. When the function is created, an API endpoint URL should be displayed for you in the "API Endpoints" tab on the Lambda page. Copy that endpoint to a text editor as you'll need it in the following steps.
+
+17\. Navigate to the API Gateway console and click the POST method for the newly created **/slack** resource.
+
+18\. Click **Integration Request** for the /slack POST method. We'll create a Mapping Template to convert the incoming query string parameters from Slack into JSON which is the format Lambda requires for parameters.
+
+19\. Expand the Mapping Templates arrow and click **Add mapping template**. In the Content-Type box, enter **application/x-www-form-urlencoded** and click the little black checkmark to continue. As you did in the Twilio lab, we're going to copy VTL mapping logic to convert the request to JSON. A new section will appear on the right side of the screen called "Input passthrough". Click the pencil icon next to "Input passthrough". In the dropdown that appears, select the **Mapping template** option. 
+In the text editor, copy the following into the editor: 
+
+```
+{"body": $input.json("$")}
+```
 
 * * *
 
