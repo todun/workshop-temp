@@ -139,7 +139,7 @@ In this section, you’ll wire together Twilio with an existing API Gateway endp
 
 12\. Click **Create a Lambda function** and select **Skip** on the blueprint screen as we will be creating a brand new function.
 
-13\. Create a name for the function, such as "TwilioProcessing". Leave the "Runtime" as **Node.js**. From the GitHub repo, open the **TwilioProcessing.js** file. Copy the entire contents from this file into the Lambda code entry section. Once you have copied the code into Lambda, scroll down to the section in the code where the "host" variable is declared. It should show a value of "INSERT YOUR API GATEWAY URL HERE EXCLUDING THE HTTPS://". Please replace this string with the URL of your **/twilio POST method**. This is the same URL you provided in the Twilio setup process above. Please be sure to remove the "https://" portion of the URL and the end of the URL "/ZombieWorkshopStage/zombie/twilio". Your final URL inputted into the code should look something like "xxxxxxxx.execute-api.us-west-2.amazonaws.com".
+13\. Create a name for the function, such as "TwilioProcessing". Leave the "Runtime" as **Node.js**. From the GitHub repo, open the **TwilioProcessing.js** file. Copy the entire contents from this file into the Lambda code entry section. Once you have copied the code into Lambda, scroll down to the section in the code where the "host" variable is declared. It should show a value of "INSERT YOUR API GATEWAY URL HERE EXCLUDING THE HTTPS://". Please replace this string with the URL of your **/message** POST method. Please be sure to remove the "https://" portion of the URL and the end of the URL "/ZombieWorkshopStage/zombie/message". Your final URL inputted into the code should look something like "xxxxxxxx.execute-api.us-west-2.amazonaws.com".
 
 14\. After you have copied the code into the Lambda inline code console and modifed the POST URL, scroll down to the **Lambda function handler and role** section. For the role, select **Basic execution role** from the dropdown and click "Allow" on the popup window to confirm the creation of the role. For this Lambda function we do not need any IAM permissions to other AWS services.
 
@@ -304,30 +304,47 @@ In this section, you'll create a slack group and wire it up to the Chat Service.
 
 11\. Input the Slack Token string that you copied earlier into function. You should copy the string in the "token" variable replacing the string **INSERT YOUR TOKEN FROM SLACK HERE** with your own token.
 
-12\. Scroll down to the Role dropdown and select **Basic execution role**. On the verification window that appears to confirm the role, click **Allow**. This Lambda function will not interact with any AWS services. It does emit event data to CloudWatch Logs but that permission is provided by default with the basic execution role.
+12\. In the "post_options" host variable, you will insert the URL to your Chat Service (/message) API Gateway resource so that the HTTPS requests can be sent with the messages from Slack. It should show a value of "INSERT YOUR API GATEWAY URL HERE EXCLUDING THE HTTPS://" for the **host** variable. Please replace this string with the URL of your **/message POST method**. Please be sure to remove the "https://" portion of the URL and the end of the URL "/ZombieWorkshopStage/zombie/message". Your final URL inputted into the code should look something like "xxxxxxxx.execute-api.us-west-2.amazonaws.com". Your code is now configured to check if the token sent with the request matches the token for your Slack integration. If so, it parses the data and makes an HTTPS request to your **/message** endpoint with the message from Slack.
 
-13\. Click **Next**. Now since we are using a Lambda blueprint, the Lambda function creation process will take you through an abbreviated setup of the API Gateway resource that will be associated with this Slack Service function. You should be on a page named **Configure endpoints**.
+13\. Scroll down to the Role dropdown and select **Basic execution role**. On the verification window that appears to confirm the role, click **Allow**. This Lambda function will not interact with any AWS services. It does emit event data to CloudWatch Logs but that permission is provided by default with the basic execution role.
 
-14\. On the **Configure endpoints** page, change the API Gateway to **Zombie Workshop API Gateway**, the Resource name to **slack**, the Method to **POST**, and the Security to **Open**. The final configuration should match the configurations shown below:
-![Slack API Endpoint Configuration](/Images/Slack-Step1.png)
+14\. Click **Next**. Now since we are using a Lambda blueprint, the Lambda function creation process will take you through an abbreviated setup of the API Gateway resource that will be associated with this Slack Service function. You should be on a page named **Configure endpoints**.
 
-**We're leaving our API Gateway endpoints open in this workshop. This is to allow survivors (or your teammates) to help you extend functionality freely. In production we recommend locking down the security of these resources**.
+15\. On the **Configure endpoints** page, change the API Gateway to **Zombie Workshop API Gateway**, the Resource name to **slack**, the Method to **POST**, and the Security to **Open**. The final configuration should match the configurations shown below:
+![Slack API Endpoint Configuration](/Images/Slack-Step15.png)
 
-15\. Click **Next** and on the Review page, click **Create function**. Your Lambda function will be created as well as the Slack resource in API Gateway.
+**We're leaving our API Gateway endpoints open in this workshop. This is to allow survivors (or your teammates and other groups) to help you extend functionality freely. In production we recommend locking down the security of these resources**.
 
-16\. When the function is created, an API endpoint URL should be displayed for you in the "API Endpoints" tab on the Lambda page. Copy that endpoint to a text editor as you'll need it in the following steps.
+16\. Click **Next** and on the Review page, click **Create function**. Your Lambda function will be created as well as the Slack resource in API Gateway.
 
-17\. Navigate to the API Gateway console and click the POST method for the newly created **/slack** resource.
+17\. When the function is created, an API endpoint URL should be displayed for you in the "API Endpoints" tab on the Lambda page. Copy that endpoint to a text editor as you'll need it in the following steps.
 
-18\. Click **Integration Request** for the /slack POST method. We'll create a Mapping Template to convert the incoming query string parameters from Slack into JSON which is the format Lambda requires for parameters.
+18\. Navigate to the API Gateway console and click the POST method for the newly created **/slack** resource.
 
-19\. Expand the Mapping Templates arrow and click **Add mapping template**. In the Content-Type box, enter **application/x-www-form-urlencoded** and click the little black checkmark to continue. As you did in the Twilio lab, we're going to copy VTL mapping logic to convert the request to JSON. A new section will appear on the right side of the screen called "Input passthrough". Click the pencil icon next to "Input passthrough". In the dropdown that appears, select the **Mapping template** option. 
+19\. Click **Integration Request** for the /slack POST method. We'll create a Mapping Template to convert the incoming query string parameters from Slack into JSON which is the format Lambda requires for parameters.
+
+20\. Expand the Mapping Templates arrow and click **Add mapping template**. In the Content-Type box, enter **application/x-www-form-urlencoded** and click the little black checkmark to continue. As you did in the Twilio lab, we're going to copy VTL mapping logic to convert the request to JSON. A new section will appear on the right side of the screen called "Input passthrough". Click the pencil icon next to "Input passthrough". In the dropdown that appears, select the **Mapping template** option. 
 In the text editor, copy the following into the editor: 
 
 ```
 {"body": $input.json("$")}
 ```
 
+Click the little checkmark icon to continue. The result should look like the screenshot below:
+![Slack Integration Response Mapping Template](/Images/Slack-Step20.png) 
+
+21\. Click the blue **Deploy API** button on the left side of the API Gateway console to deploy your API. In the Deploy API window, select **ZombieWorkshopStage** from the dropdown and click **Deploy**.
+
+22\. On the left pane navigation tree, expand the ZombieWorkshopStage tree. Click the **POST** method for the /slack resource. You should see an Invoke URL appear for that resource as shown below.
+![Slack Resource Invoke URL](/Images/Slack-Step22.png) 
+
+23\. Copy the entire Invoke URL. Navigate back to the Slack Command setup page and insert your Slack API Gateway Invoke URL into the "URL" textbox. Make sure to copy the entire url including "HTTPS://". Scroll to the bottom of the Slack Command screen and click **Save Integration**.
+
+24\. You're ready to test out the Slack Command integration. In the team chat for your Slack account, type the Slack Command "/survivors" followed by a message. For example, type "/survivors Please help me I am stuck and zombies are trying to get me!". After sending it, you should get a confirmation response message from Slack Bot like the one below:
+![Slack Command Success](/Images/Slack-Step24.png) 
+
+Navigate to your zombie survivor chat app and you should see the message from Slack appear. You have configured Slack to send messages to your chat app!
+![Slack Command in Chat App](/Images/Slack-Step25.png) 
 * * *
 
 ### 5\. Motion Sensor Integration with Intel Edison and Grove
