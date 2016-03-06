@@ -344,7 +344,9 @@ Click the little checkmark icon to continue. The result should look like the scr
 ![Slack Command Success](/Images/Slack-Step24.png) 
 
 Navigate to your zombie survivor chat app and you should see the message from Slack appear. You have configured Slack to send messages to your chat app!
-![Slack Command in Chat App](/Images/Slack-Step25.png) 
+![Slack Command in Chat App](/Images/Slack-Step25.png)
+
+**Bonus:** Can you get messages sent to the chat app to appear in the Slack team chat? Give it a try or come back and attempt it later when you've finished the rest of the labs! 
 * * *
 
 ### 5\. Motion Sensor Integration with Intel Edison and Grove
